@@ -1,0 +1,87 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BEAM</title>
+    <link rel="icon" href="~/images/logo.png">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/style_sidebar.css" />
+    <link rel="stylesheet" href="~/css/toggle-switch.css" />
+    <link rel="stylesheet" href="~/DataTables/datatables.css" />
+    <link rel="stylesheet" href="~/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a is-active-route asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Dashboard</a></li>
+                
+                    <li class="dropdown " id="myDropdown">
+                        <a asp-controller="Users" asp-action="Index" is-active-route data-toggle="dropdown"><i class="fas fa-users"></i>BEAM-Admin<span class="fas fa-caret-down first"></span></a>
+                        <ul class="d-menu">
+                            <li><a is-active-route asp-controller="Users" asp-action="Index"><i class="fas fa-users"></i>Users</a></li>
+                            <li><a is-active-route asp-controller="Groups" asp-action="Index"><i class="fas fa-key"></i>Groups</a></li>
+                            <li><a is-active-route asp-controller="Roles" asp-action="Index"><i class="fas fa-user-cog"></i>Roles</a></li>
+                        </ul>
+                    </li>
+                
+                @*<li><a is-active-route asp-controller="AssignGroup" asp-action="Index"><i class="fas fa-home"></i>Tab1</a></li>
+                    <li><a is-active-route asp-controller="AssignRole" asp-action="Index"><i class="fas fa-home"></i>Tab2</a></li>*@
+
+            </ul>
+        </div>
+    </div>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <div class="content">
+                    <img id="header-logo" alt="" src="~/images/logo.png">
+                    <p class="navbar-brand"></p>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BEAM</a>
+
+                </div>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <p class="nav navbar-text navbar-right"> @*@User.FindFirst(Beam.Authorization.BeamClaimsTransform.ClaimType_DisplayName)?.Value*@ Royario,Albert </p>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid" id="page-content">
+        <div class="content">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container-fluid">
+            <div class="content">
+                &copy; 2020 - Beam - <a id="footer_link" href="http://bbc.brose.net/irj/portal">Brose BBC </a>-<a id="footer_link" href="http://bbc.brose.net/irj/portal?NavigationTarget=navurl://b9559e1b0121e7d49b18fe61f51a922a"> IT Support</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/sidemenu.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="~/DataTables/datatables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

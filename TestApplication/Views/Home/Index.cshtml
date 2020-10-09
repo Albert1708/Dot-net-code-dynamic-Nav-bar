@@ -1,0 +1,16 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Hello @*@User.FindFirst(Beam.Authorization.BeamClaimsTransform.ClaimTypes_GivenName)?.Value*@</h1>
+
+
+</div>
+<div class=" border container-fluid row p-1 m-1">
+    <div class="col-12">
+        <h3 class="text-info">Here will be the dashboard.</h3>
+    </div>
+</div>
+
